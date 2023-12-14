@@ -12,17 +12,17 @@ services:
       - ./postgres_data:/var/lib/postgresql/data/
   
   frontend:
-    build: ./Frontend
+    build: ./Frontend-Shoonya
     volumes:
-      - ./Frontend/:/usr/src/frontend/
+      - ./Frontend-Shoonya/:/usr/src/frontend/
     ports:
       - 3000:3000
 
   web:
-    build: ./Backend/backend
+    build: ./Backend-Shoonya/backend
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./Backend/backend/:/usr/src/backend/
+      - ./Backend-Shoonya/backend/:/usr/src/backend/
     environment:
       - DJANGO_SUPERUSER_EMAIL=admin@gmail.com
       - DJANGO_SUPERUSER_PASSWORD=adminpassword
@@ -41,10 +41,10 @@ services:
   celery:
     container_name: celery-default
     restart: always
-    build: ./Backend/backend
+    build: ./Backend-Shoonya/backend
     command: celery -A shoonya_backend.celery worker -Q default --concurrency=2 --loglevel=info
     volumes:
-      - ./Backend/backend/:/usr/src/backend/
+      - ./Backend-Shoonya/backend/:/usr/src/backend/
     depends_on:
       - db
       - redis
@@ -54,10 +54,10 @@ services:
   celery2: 
     container_name: celery-low-priority
     restart: always
-    build: ./Backend/backend
+    build: ./Backend-Shoonya/backend
     command: celery -A shoonya_backend.celery worker -Q functions --concurrency=2 --loglevel=info
     volumes:
-      - ./Backend/backend/:/usr/src/backend/
+      - ./Backend-Shoonya/backend/:/usr/src/backend/
     depends_on:
       - db
       - redis
@@ -65,10 +65,10 @@ services:
 
   # Celery beats - for scheduling daily e-mails
   celery-beat:
-    build: ./Backend/backend
+    build: ./Backend-Shoonya/backend
     command: celery -A shoonya_backend.celery beat --loglevel=info
     volumes:
-      - ./Backend/backend:/usr/src/backend
+      - ./Backend-Shoonya/backend:/usr/src/backend
     depends_on:
       - db
       - redis
