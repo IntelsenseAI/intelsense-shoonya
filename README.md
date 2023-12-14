@@ -5,7 +5,7 @@
 cd Shoonya
 
 # Build images
-docker-compose -f docker-compose-intelsense.yaml build
+docker-compose -f docker-compose-intelsense.yaml build --no-cache
 
 # Run containers
 docker-compose -f docker-compose-intelsense.yaml up -d
