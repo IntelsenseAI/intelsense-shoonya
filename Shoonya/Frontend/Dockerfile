@@ -6,8 +6,8 @@ WORKDIR /usr/src/frontend
 COPY package*.json /usr/src/frontend
 
 # Install project dependencies
-RUN npm install --legacy-peer-deps
-RUN npm audit --force
+RUN npm install --legacy-peer-deps --no-update-notifier
+
 
 
 # Copy the entire project to the container

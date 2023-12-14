@@ -10,7 +10,6 @@ static/
 
 
 # Env
-.env*
 virtualenv/
 myvenv/
 venv/
