@@ -17,8 +17,6 @@ services:
       - ./Frontend/:/usr/src/frontend/
     ports:
       - 3000:3000
-    depends_on:
-      - web
 
   web:
     build: ./Backend/backend
