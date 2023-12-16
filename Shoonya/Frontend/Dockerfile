@@ -13,4 +13,4 @@ RUN npm install --legacy-peer-deps
 COPY . /usr/src/frontend/
 
 # # Start the development server with npm run dev
-# CMD [ "npm", "start"]
+CMD [ "npm", "start"]
