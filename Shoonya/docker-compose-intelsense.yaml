@@ -22,7 +22,7 @@ services:
     volumes:
       - ./Backend/backend/:/usr/src/backend/
     environment:
-      - DJANGO_SUPERUSER_EMAIL=admin@gmail.com
+      - DJANGO_SUPERUSER_EMAIL=admin@intelsense.com
       - DJANGO_SUPERUSER_PASSWORD=adminpassword
     ports:
       - 8000:8000
