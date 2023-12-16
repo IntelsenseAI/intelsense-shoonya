@@ -3,8 +3,6 @@ Model definitions for Dataset Management
 """
 from django.db import models
 from users.models import User, LANG_CHOICES
-from organizations.models import Organization
-from workspaces.models import Workspace
 
 
 
@@ -106,7 +104,7 @@ class DatasetInstance(models.Model):
     instance_description = models.TextField(
         verbose_name="dataset_instance_description", null=True, blank=True
     )
-    organisation_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    organisation_id = models.ForeignKey('organizations.Organization', on_delete=models.CASCADE)
     dataset_type = models.CharField(
         verbose_name="dataset_type",
         choices=DATASET_TYPE_CHOICES,
