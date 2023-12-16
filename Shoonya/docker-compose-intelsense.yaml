@@ -15,14 +15,8 @@ services:
     image: rhsajib/shoonya-frontend:v1.0
     ports:
       - 3000:3000
-    # build: ./Frontend
-    # volumes:
-    #   - ./Frontend/:/usr/src/frontend/
-    # command: npm start
-    # ports:
-    #   - 3000:3000
 
-  web:
+  backend:
     build: ./Backend/backend
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
